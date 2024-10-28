@@ -1,0 +1,14 @@
+node_modules
+.cb-cli
+deployments
+devices
+edges
+message-history-storage
+message-type-triggers
+plugins
+portals
+secrets
+shared-caches
+triggers
+users
+webhooks
