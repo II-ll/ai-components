@@ -14,7 +14,8 @@
     "url": "git+https://github.com/ClearBlade/ia-components.git"
   },
   "scripts": {
-    "build:library": "rspack build -c cb-dev-kit/rspack.config.js --config-name library"
+    "create:component": "bash scripts/createComponent.sh --component-name $COMPONENT_NAME",
+    "build:component": "rspack build -c cb-dev-kit/rspack.config.js --config-name library"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.16.10",
