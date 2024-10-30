@@ -14,19 +14,30 @@
         "AllServices": {
             "Level": 0
         },
-        "CodeServices": [],
+        "CodeServices": [
+            {
+                "Level": 1,
+                "Name": "deletePipeline"
+            },
+            {
+                "Level": 1,
+                "Name": "insertPipeline"
+            },
+            {
+                "Level": 1,
+                "Name": "mlPipelineBuilder"
+            },
+            {
+                "Level": 1,
+                "Name": "updatePipeline"
+            }
+        ],
         "Collections": [
             {
                 "Columns": null,
                 "Items": null,
                 "Level": 15,
                 "Name": "ml_pipelines"
-            },
-            {
-                "Columns": null,
-                "Items": null,
-                "Level": 15,
-                "Name": "subscriptions"
             }
         ],
         "Deployments": {
