@@ -19,6 +19,7 @@ import {
   getPipelines,
   killPipeline,
   updatePipelineRows,
+  shouldRunPipeline,
 } from "./utils";
 
 async function mlPipelineBuilder(_: CbServer.BasicReq, resp: CbServer.Resp) {
@@ -58,9 +59,11 @@ async function mlPipelineBuilder(_: CbServer.BasicReq, resp: CbServer.Resp) {
         row.asset_type_id,
         row.data_threshold !== undefined ? row.data_threshold : 100000
       );
-      if (!check) {
+
+      if (!check || !shouldRunPipeline(row)) {
         continue;
       }
+
       if (row.pipeline_run_id?.last_run) {
         const killResults = await killPipeline(row.pipeline_run_id.last_run);
         if (killResults.error) {

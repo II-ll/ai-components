@@ -42,37 +42,7 @@ export const getPipelines = async (): Promise<PipelineData[]> => {
   });
   const data = await col.fetch(ClearBladeAsync.Query());
   if (data.TOTAL === 0) return [];
-  return data.DATA.filter((pipeline) => {
-    if (!pipeline.last_pipeline_run) {
-      return true;
-    }
-    const currentDate = new Date();
-    const lastRun = new Date(pipeline.last_pipeline_run);
-    switch (pipeline.run_frequency) {
-      case RunFrequency.WEEKLY: {
-        const nextRun = new Date(lastRun.setDate(lastRun.getDate() + 7));
-        return nextRun < currentDate;
-      }
-      case RunFrequency.TWICE_A_MONTH: {
-        let nextRun = new Date(lastRun.setDate(lastRun.getDate() + 14));
-        nextRun =
-          nextRun.getDate() < 29
-            ? nextRun
-            : new Date(nextRun.setMonth(nextRun.getMonth() + 1, 1));
-        return nextRun < currentDate;
-      }
-      case RunFrequency.MONTHLY: {
-        const nextRun = new Date(lastRun.setMonth(lastRun.getMonth() + 1));
-        return nextRun < currentDate;
-      }
-      case RunFrequency.EVERY_OTHER_MONTH: {
-        const nextRun = new Date(lastRun.setMonth(lastRun.getMonth() + 2));
-        return nextRun < currentDate;
-      }
-      default:
-        return false;
-    }
-  });
+  return data.DATA;
 };
 
 export const isThresholdMet = async (
@@ -127,6 +97,38 @@ export const isThresholdMet = async (
   } catch (error) {
     console.error("Error:", error);
     return false;
+  }
+};
+
+export const shouldRunPipeline = (pipeline: PipelineData): boolean => {
+  if (!pipeline.last_pipeline_run) {
+    return true;
+  }
+  const currentDate = new Date();
+  const lastRun = new Date(pipeline.last_pipeline_run);
+  switch (pipeline.run_frequency) {
+    case RunFrequency.WEEKLY: {
+      const nextRun = new Date(lastRun.setDate(lastRun.getDate() + 7));
+      return nextRun < currentDate;
+    }
+    case RunFrequency.TWICE_A_MONTH: {
+      let nextRun = new Date(lastRun.setDate(lastRun.getDate() + 14));
+      nextRun =
+        nextRun.getDate() < 29
+          ? nextRun
+          : new Date(nextRun.setMonth(nextRun.getMonth() + 1, 1));
+      return nextRun < currentDate;
+    }
+    case RunFrequency.MONTHLY: {
+      const nextRun = new Date(lastRun.setMonth(lastRun.getMonth() + 1));
+      return nextRun < currentDate;
+    }
+    case RunFrequency.EVERY_OTHER_MONTH: {
+      const nextRun = new Date(lastRun.setMonth(lastRun.getMonth() + 2));
+      return nextRun < currentDate;
+    }
+    default:
+      return false;
   }
 };
 
