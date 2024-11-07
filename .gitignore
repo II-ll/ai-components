@@ -1,17 +1,9 @@
 node_modules
 .cb-cli
-deployments
-devices
-edges
-message-history-storage
-message-type-triggers
-plugins
-portals
 secrets
-shared-caches
-triggers
-users
-webhooks
+ts-output
+external-databases
+bucket-set*
 
 # Logs
 logs
