@@ -4,11 +4,13 @@
     // "baseUrl": ".",
     "rootDir": ".",
     "outDir": "./ts-output/",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "declarationDir": "dist"
   },
   "files": [
     "node_modules/@clearblade/code-service-types/types/index.d.ts",
-    "node_modules/@clearblade/code-service-types/types/globals.d.ts"
+    "node_modules/@clearblade/code-service-types/types/globals.d.ts",
   ],
   "include": ["./src/**/*", "./roles/*.json"],
   "ts-node": {

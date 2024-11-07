@@ -7,7 +7,7 @@ import { BQDataSchema } from "./types";
 
 export function ComponentsHelper() {
   const ARTIFACTS_BUCKET_SET = "ia-components";
-  const ML_PIPELINES = "ml_pipelines";
+  const ML_PIPELINES = "ai_components_ml_pipelines";
 
   async function shouldInitializeArtifacts(id: string, data: BQDataSchema) {
     const query = ClearBladeAsync.Query()

@@ -1,0 +1,7 @@
+{
+  "api": null,
+  "dependencies": "",
+  "description": "This is an anomaly detection component. ",
+  "name": "ai_components_AnomalyDetection",
+  "visibility": "system"
+}

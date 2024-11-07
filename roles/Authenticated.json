@@ -14,32 +14,8 @@
         "AllServices": {
             "Level": 0
         },
-        "CodeServices": [
-            {
-                "Level": 1,
-                "Name": "deletePipeline"
-            },
-            {
-                "Level": 1,
-                "Name": "insertPipeline"
-            },
-            {
-                "Level": 1,
-                "Name": "mlPipelineBuilder"
-            },
-            {
-                "Level": 1,
-                "Name": "updatePipeline"
-            }
-        ],
-        "Collections": [
-            {
-                "Columns": null,
-                "Items": null,
-                "Level": 15,
-                "Name": "ml_pipelines"
-            }
-        ],
+        "CodeServices": [],
+        "Collections": [],
         "Deployments": {
             "Level": 0
         },

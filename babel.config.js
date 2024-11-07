@@ -12,7 +12,28 @@ module.exports = (api) => {
           corejs: '3.20',
         },
       ],
+      [
+        "@babel/preset-react", 
+        {
+          "runtime": "automatic"
+        }
+      ],
     ],
-    plugins: ['@babel/plugin-transform-runtime'],
+    plugins: [
+      ['@babel/plugin-transform-runtime', 
+      {
+        "useESModules": true,
+        "regenerator": false
+      }],
+    ],
+    env: {
+      test: {
+        presets: [
+          ["@babel/preset-env", {
+            "targets": "current node"
+          }]
+        ]
+      }
+    }
   };
 };
