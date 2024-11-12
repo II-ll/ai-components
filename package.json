@@ -14,7 +14,7 @@
     "url": "git+https://github.com/ClearBlade/ai-components.git"
   },
   "scripts": {
-    "create:component": "bash scripts/createComponent.sh --component-name $COMPONENT_NAME",
+    "create:ai-component": "bash scripts/createComponent.sh --component-name $COMPONENT_NAME",
     "build:library": "rspack build -c cb-dev-kit/rspack.config.js --config-name library",
     "build:service": "rspack build -c cb-dev-kit/rspack.config.js --config-name service",
     "start": "webpack serve",

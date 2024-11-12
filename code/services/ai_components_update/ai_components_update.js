@@ -15,12 +15,13 @@
 function ai_components_update(req, resp) {
   const params = req.params;
   const mfe_settings = params.mfe_settings;
+
   const col = ClearBladeAsync.Collection('ai_components_ml_pipelines');
   const query = ClearBladeAsync.Query().equalTo('component_id', params.component_id).equalTo('asset_type_id', params.entity_id);
 
   const updateData = {
-    asset_type_id: entity_id,
-    component_id: id,
+    asset_type_id: params.entity_id,
+    component_id: params.component_id,
   };
 
   if (mfe_settings.model_meta) {
@@ -30,9 +31,10 @@ function ai_components_update(req, resp) {
     if (mfe_settings.model_meta.data_threshold) {
       updateData['data_threshold'] = mfe_settings.model_meta.data_threshold;
     }
-    if (mfe_settings.model_meta.feature_attributes) {
-      updateData['feature_attributes'] = mfe_settings.features.map(function (feature) { return feature.attribute_name });
-    }
+  }
+
+  if (mfe_settings.features) {
+    updateData['feature_attributes'] = mfe_settings.features.map(function (feature) { return feature.attribute_name });
   }
 
   col.update(query, updateData).then(resp.success).catch(resp.error);

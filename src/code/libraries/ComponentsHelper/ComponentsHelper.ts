@@ -35,12 +35,14 @@ export function ComponentsHelper() {
       pipelineData.init_artifacts &&
       currentDate > new Date(lastRun.setHours(lastRun.getHours() + 1))
     ) {
+      console.log("returning true from shouldInitializeArtifacts");
       await ClearBladeAsync.Collection<{
         last_pipeline_run: string;
         init_artifacts: boolean;
       }>(ML_PIPELINES).update(query, { init_artifacts: false });
       return true;
     }
+    console.log("returning false from shouldInitializeArtifacts");
     return false;
   }
 

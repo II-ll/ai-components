@@ -326,4 +326,4 @@ export function ai_components_AnomalyDetection(ID: string) {
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-global.AnomalyDetection = AnomalyDetection;
+global.ai_components_AnomalyDetection = ai_components_AnomalyDetection;

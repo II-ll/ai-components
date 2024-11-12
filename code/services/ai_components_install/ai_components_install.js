@@ -29,21 +29,22 @@ function ai_components_install(req, resp) {
     if (mfe_settings.model_meta.data_threshold) {
       data_threshold = mfe_settings.model_meta.data_threshold;
     }
-    if (mfe_settings.model_meta.feature_attributes) {
-      feature_attributes = mfe_settings.features.map(function (feature) { return feature.attribute_name });
-    }
+  }
+
+  if (mfe_settings.features) {
+    feature_attributes = mfe_settings.features.map(function (feature) { return feature.attribute_name });
   }
   
   col.create({
     asset_type_id: params.entity_id,
-    component_id: params.id,
+    component_id: params.component_id,
     run_frequency,
     feature_attributes,
     data_threshold,
     init_artifacts: false,
   }).then(function(){
     return client.publish('_ai/_components/_install', JSON.stringify({
-      id: params.id + "_" + params.component_id,
+      id: params.prefix + "_" + params.component_id,
     }));
   }).then(resp.success).catch(resp.error);
 }
