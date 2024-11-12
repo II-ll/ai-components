@@ -12,14 +12,12 @@
  * @param {CbServer.Resp} resp
  */
 
-function ai_components_setup(req, resp) {
+function ai_components_teardown(req, resp) {
   const SECRET_KEY = 'gcp-bigquery-service-account'
   const CACHE_KEY = 'google-bigquery-config'
   const PROJECT_ID = 'clearblade-ipm'
   const DATASET_ID = 'clearblade_components'
   
-  var mySecret = {}
-
   Promise.all([
     removeSubscriptionRow(),
     deleteExternalDB(),
@@ -31,6 +29,7 @@ function ai_components_setup(req, resp) {
   });
 
   function removeSubscriptionRow() {
+    const col = ClearBladeAsync.Collection('subscriptions');
     return col.remove({id: CACHE_KEY}).then(function() {
       return Promise.resolve('Deleted existing subscription');
     }).catch(function() {
