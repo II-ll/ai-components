@@ -26,7 +26,7 @@ function ai_components_uninstall(req, resp) {
     return getAccessToken();
   }).then(function(token) {
     if (!token) {
-      resp.error('No access token found');
+      resp.success('No access token found, so not deleting BQ data');
     }
     return removeBQData(token.accessToken, params.entity_id);
   }).then(resp.success).catch(resp.error);

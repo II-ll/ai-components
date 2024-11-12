@@ -30,7 +30,7 @@ function ai_components_teardown(req, resp) {
 
   function removeSubscriptionRow() {
     const col = ClearBladeAsync.Collection('subscriptions');
-    return col.remove({id: CACHE_KEY}).then(function() {
+    return col.remove(ClearBladeAsync.Query().equalTo('id', CACHE_KEY)).then(function() {
       return Promise.resolve('Deleted existing subscription');
     }).catch(function() {
       return Promise.resolve('No existing subscription');
