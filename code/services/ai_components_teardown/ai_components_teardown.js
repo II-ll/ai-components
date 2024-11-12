@@ -23,7 +23,7 @@ function ai_components_teardown(req, resp) {
     deleteExternalDB(),
     deleteBucketSet(),
   ]).then(function() {
-    resp.success('Setup completed successfully!');
+    resp.success('Teardown completed successfully!');
   }).catch(function(err) {
     resp.error(err);
   });

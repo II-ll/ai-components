@@ -141,7 +141,7 @@ function ai_components_setup(req, resp) {
       body: JSON.stringify(tableResource),
     }).then(function(response) {
       if (!response.ok) {
-        return Promise.reject(response.text());
+        return Promise.resolve(response.text());
       }
       return Promise.resolve('BigQuery table created!');
     }).catch(function(error) {
