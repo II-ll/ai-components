@@ -14,8 +14,40 @@
         "AllServices": {
             "Level": 0
         },
-        "CodeServices": [],
-        "Collections": [],
+        "CodeServices": [
+            {
+                "Level": 1,
+                "Name": "ai_components_install"
+            },
+            {
+                "Level": 1,
+                "Name": "ai_components_mlPipelineBuilder"
+            },
+            {
+                "Level": 1,
+                "Name": "ai_components_setup"
+            },
+            {
+                "Level": 1,
+                "Name": "ai_components_teardown"
+            },
+            {
+                "Level": 1,
+                "Name": "ai_components_uninstall"
+            },
+            {
+                "Level": 1,
+                "Name": "ai_components_update"
+            }
+        ],
+        "Collections": [
+            {
+                "Columns": null,
+                "Items": null,
+                "Level": 15,
+                "Name": "ai_components_ml_pipelines"
+            }
+        ],
         "Deployments": {
             "Level": 0
         },
@@ -25,12 +57,7 @@
         "EdgesList": {
             "Level": 0
         },
-        "ExternalDatabases": [
-            {
-                "Level": 1,
-                "Name": "IAComponentsBQDB"
-            }
-        ],
+        "ExternalDatabases": [],
         "Files": [],
         "ManageUsers": {
             "Level": 0
