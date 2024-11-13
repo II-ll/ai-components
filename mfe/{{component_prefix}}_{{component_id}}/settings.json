@@ -1,0 +1,122 @@
+{
+  "attributes": [
+    {
+      "attribute_name": "{{component_id}}_attribute",
+      "attribute_type": "number",
+      "attribute_label": "{{component_id}} attribute"
+    }
+  ],
+  "eventTypes": [
+    {
+      "action_types": [
+        "send_sms",
+        "send_email",
+        "send_teams_message"
+      ],
+      "closed_states": [],
+      "description": "Event type for {{component_id}}",
+      "has_lifecycle": false,
+      "id": "{{component_id}}_event_type",
+      "label": "{{component_id}} Event Type",
+      "open_states": [],
+      "priority": 2,
+      "severity": 3
+    }
+  ],
+  "ruleTypes": [
+    {
+      "label": "{asset_type_label} {{component_id}}",
+      "event_type_ids": [
+        "{{component_id}}_event_type"
+      ],
+      "include_timeframe": false,
+      "is_invalid": false,
+      "is_external": false,
+      "conditions": {
+        "and": [
+          {
+            "type": "state",
+            "meta": [
+              {
+                "entity": {
+                  "suffix": "",
+                  "filter_type": [
+                    {
+                      "type": "types",
+                      "label": "Asset Types",
+                      "id": "asset_types"
+                    }
+                  ],
+                  "prefix": "When",
+                  "selected_entity": {
+                    "value": "{asset_type_id}",
+                    "ancestorId": "{asset_type_id}"
+                  },
+                  "allow_types": true,
+                  "allow_specific": true
+                }
+              },
+              {
+                "relationship": {
+                  "attribute_type": "number",
+                  "suffix": "",
+                  "equal": "",
+                  "greaterThanInclusive": "is greater than",
+                  "attribute": "{{component_id}}_attribute",
+                  "attribute_label": "{{component_id}} attribute"
+                }
+              },
+              {
+                "duration": {
+                  "include_duration": false
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "action_ids": [],
+      "closed_by_rule": {},
+      "closes_ids": [],
+      "conditions": {
+        "and": [
+          {
+            "entity": {
+              "id": "{asset_type_id}",
+              "entity_type": "asset_types"
+            },
+            "relationship": {
+              "operator": "greaterThanInclusive",
+              "attribute": "{{component_id}}_attribute",
+              "attribute_type": "state",
+              "duration": {
+                "value": 0,
+                "unit": "seconds"
+              },
+              "value": 50
+            }
+          }
+        ]
+      },
+      "custom_id": "",
+      "event_type_id": "{{component_id}}_event_type",
+      "id": "",
+      "is_disabled": false,
+      "is_invalid": false,
+      "label": "{{component_id}} on {asset_type_label}",
+      "priority": 2,
+      "rule_type_id": "",
+      "severity": 3,
+      "timeframe": {
+        "type": "",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "days": []
+      }
+    }
+  ]
+}

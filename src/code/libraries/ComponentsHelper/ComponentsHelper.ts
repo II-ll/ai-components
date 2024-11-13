@@ -7,7 +7,7 @@ import { BQDataSchema } from "./types";
 
 export function ComponentsHelper() {
   const ARTIFACTS_BUCKET_SET = "ia-components";
-  const ML_PIPELINES = "ai_components_ml_pipelines";
+  const {{collection_name}} = "{{component_prefix}}_{{collection_name}}";
 
   async function shouldInitializeArtifacts(id: string, data: BQDataSchema) {
     const query = ClearBladeAsync.Query()
@@ -16,7 +16,7 @@ export function ComponentsHelper() {
     const colResp = await ClearBladeAsync.Collection<{
       last_pipeline_run: string;
       init_artifacts: boolean;
-    }>(ML_PIPELINES).fetch(query);
+    }>({{collection_name}}).fetch(query);
 
     if (colResp.TOTAL === 0) {
       return false; // no pipeline found for this component
@@ -38,7 +38,7 @@ export function ComponentsHelper() {
       await ClearBladeAsync.Collection<{
         last_pipeline_run: string;
         init_artifacts: boolean;
-      }>(ML_PIPELINES).update(query, { init_artifacts: false });
+      }>({{collection_name}}).update(query, { init_artifacts: false });
       return true;
     }
     return false;

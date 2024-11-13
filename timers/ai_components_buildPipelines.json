@@ -1,8 +1,0 @@
-{
-    "description": "Hourly Timer for mlPipelineBuilder",
-    "frequency": 3600,
-    "name": "ai_components_buildPipelines",
-    "repeats": -1,
-    "service_name": "ai_components_mlPipelineBuilder",
-    "start_time": "2024-09-24T14:00:00Z"
-}

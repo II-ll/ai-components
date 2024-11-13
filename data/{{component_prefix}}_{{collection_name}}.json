@@ -1,0 +1,30 @@
+{
+    "indexes": {
+        "Total": 0,
+        "Data": []
+    },
+    "items": [],
+    "name": "{{component_prefix}}_{{collection_name}}",
+    "schema": [
+        {
+            "ColumnName": "item_id",
+            "ColumnType": "uuid",
+            "PK": true
+        },
+        {
+            "ColumnName": "asset_type_id",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "component_id",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "Add any other fields you need. If your component does not need a collection, you can delete this file.",
+            "ColumnType": "jsonb",
+            "PK": false
+        }
+    ]
+}

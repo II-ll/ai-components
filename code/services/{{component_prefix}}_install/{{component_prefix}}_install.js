@@ -1,0 +1,25 @@
+/**
+ * Type: Micro Service
+ * Description: A short-lived service which is expected to complete within a fixed period of time.
+ * @param {CbServer.BasicReq} req
+ * @param {string} req.systemKey
+ * @param {string} req.systemSecret
+ * @param {string} req.userEmail
+ * @param {string} req.userid
+ * @param {string} req.userToken
+ * @param {boolean} req.isLogging
+ * @param {[id: string]} req.params
+ * @param {CbServer.Resp} resp
+ */
+
+function {{component_prefix}}_install(req, resp) {
+  const params = req.params;
+  const mfe_settings = params.mfe_settings;
+  //component install behavior here. Initialize an instance of the component for use
+  const col = ClearBladeAsync.Collection('{{component_prefix}}_{{collection_name}}');
+  col.create({
+    asset_type_id: params.entity_id,
+    component_id: params.component_id,
+    //any additional fields for the collection
+  }).then(resp.success).catch(resp.error);
+}

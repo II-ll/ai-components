@@ -17,27 +17,23 @@
         "CodeServices": [
             {
                 "Level": 1,
-                "Name": "ai_components_install"
+                "Name": "{{component_prefix}}_install"
             },
             {
                 "Level": 1,
-                "Name": "ai_components_mlPipelineBuilder"
+                "Name": "{{component_prefix}}_setup"
             },
             {
                 "Level": 1,
-                "Name": "ai_components_setup"
+                "Name": "{{component_prefix}}_teardown"
             },
             {
                 "Level": 1,
-                "Name": "ai_components_teardown"
+                "Name": "{{component_prefix}}_uninstall"
             },
             {
                 "Level": 1,
-                "Name": "ai_components_uninstall"
-            },
-            {
-                "Level": 1,
-                "Name": "ai_components_update"
+                "Name": "{{component_prefix}}_update"
             }
         ],
         "Collections": [
@@ -45,7 +41,7 @@
                 "Columns": null,
                 "Items": null,
                 "Level": 15,
-                "Name": "ai_components_ml_pipelines"
+                "Name": "{{component_prefix}}_{{collection_name}}"
             }
         ],
         "Deployments": {

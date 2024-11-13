@@ -1,0 +1,7 @@
+{
+  "api": null,
+  "dependencies": "",
+  "description": "Component description here. ",
+  "name": "{{component_prefix}}_{{component_id}}",
+  "visibility": "system"
+}

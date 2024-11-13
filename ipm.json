@@ -1,16 +1,16 @@
 {
   "author": "ClearBlade",
-  "description": "This is an Anomaly Detection Component",
+  "description": "Component description",
   "homepage": "https://github.com/ClearBlade/ai-components#readme",
   "image_url": "https://docs.clearblade.com/v/4/static/img/default_package.png",
   "keywords": [],
   "license": "MIT",
-  "name": "AnomalyDetection",
+  "name": "{{component_id}}_",
   "private": false,
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClearBlade/ai-components.git"
+    "url": "git+https://github.com/ClearBlade/{{repo_name}}.git"
   },
   "engines": {
     "ia": ">=0.0.1 <14",

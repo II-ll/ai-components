@@ -16,14 +16,10 @@ module.exports = (webpackConfigEnv, argv) => {
       path: path.resolve(__dirname, "dist"),
     },
     entry: {
-      ai_components_AnomalyDetection: path.resolve(
+      {{component_prefix}}_{{component_id}}: path.resolve(
         __dirname,
-        "mfe/ai_components_AnomalyDetection/index.tsx"
+        "mfe/{{component_prefix}}_{{component_id}}/index.tsx"
       ),
-      // aiComponents_PredictiveMaintenance: path.resolve(
-      //   __dirname,
-      //   "src/aiComponents/PredictiveMaintenance/index.tsx"
-      // ),
     },
     externals: [
       "@clearblade/ia-mfe-core",

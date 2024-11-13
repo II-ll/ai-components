@@ -73,7 +73,7 @@ export default function InternalComponents(
                         <span style={{ fontWeight: "bold" }}>Attributes*</span>
                       </Typography>
                     </FormLabel>
-                    <Tooltip title="This is required field. The Anomaly detection component will track anomalies for the selected attributes from this list.">
+                    <Tooltip title="This is required field. The {{component_id}} component will ...">
                       <IconButton
                         size="small"
                         aria-label="help"
