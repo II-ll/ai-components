@@ -1,0 +1,31 @@
+name: REPLACE_TEMPLATE_VARIABLES
+on:
+  create:
+    branches:
+      - main
+
+jobs:
+  replace-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Replace Variables in Files and File Names
+        run: |
+          find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
+          find . -type f -exec sed -i 's/{{component_prefix}}/YOUR_COMPONENT_PREFIX/g' {} \;
+          find . -type f -exec sed -i 's/{{collection_name}}/YOUR_COLLECTION_NAME/g' {} \;
+
+          # Rename files and directories with variables
+          find . -depth -name '*{{component_id}}*' -execdir bash -c 'mv "$1" "${1//{{component_id}}/YOUR_COMPONENT_ID}"' _ {} \;
+          find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//{{component_prefix}}/YOUR_COMPONENT_PREFIX}"' _ {} \;
+          find . -depth -name '*{{collection_name}}*' -execdir bash -c 'mv "$1" "${1//{{collection_name}}/YOUR_COLLECTION_NAME}"' _ {} \;
+
+      - name: Commit Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Replaced template variables"
+          git push origin main
