@@ -19,7 +19,7 @@
     "build:service": "rspack build -c cb-dev-kit/rspack.config.js --config-name service",
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
-    "build": "concurrently npm:build:*",
+    "build": "concurrently npm:build:webpack",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
     "lint": "eslint src --ext js,ts,tsx",
