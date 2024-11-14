@@ -1,4 +1,3 @@
-import { ComponentsHelper } from "../ComponentsHelper/ComponentsHelper";
 /**
  * Type: Library
  * Description: A library that contains a function which, when called, returns an object with a public API.

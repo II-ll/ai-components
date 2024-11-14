@@ -15,12 +15,12 @@ jobs:
         run: |
           find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
           find . -type f -exec sed -i 's/{{component_prefix}}/YOUR_COMPONENT_PREFIX/g' {} \;
-          find . -type f -exec sed -i 's/{{collection_name}}/YOUR_COLLECTION_NAME/g' {} \;
+          find . -type f -exec sed -i 's/{{component_name}}/YOUR_COMPONENT_NAME/g' {} \;
 
           # Rename files and directories with variables
           find . -depth -name '*{{component_id}}*' -execdir bash -c 'mv "$1" "${1//{{component_id}}/YOUR_COMPONENT_ID}"' _ {} \;
           find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//{{component_prefix}}/YOUR_COMPONENT_PREFIX}"' _ {} \;
-          find . -depth -name '*{{collection_name}}*' -execdir bash -c 'mv "$1" "${1//{{collection_name}}/YOUR_COLLECTION_NAME}"' _ {} \; #having a custome collection is optional for your component. You may delete this line and the data folder if you don't need it.
+          find . -depth -name '*{{component_name}}*' -execdir bash -c 'mv "$1" "${1//{{component_name}}/YOUR_COMPONENT_NAME}"' _ {} \;
 
       - name: Commit Changes
         run: |

@@ -60,7 +60,7 @@ export default function ExternalComponents(
                         <span style={{ fontWeight: "bold" }}>Attributes*</span>
                       </Typography>
                     </FormLabel>
-                    <Tooltip title="This is required field. The {{component_id}} component will...">
+                    <Tooltip title="This is required field. The {{component_name}} component will...">
                       <IconButton
                         size="small"
                         aria-label="help"

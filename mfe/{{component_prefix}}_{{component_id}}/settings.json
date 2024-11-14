@@ -3,7 +3,7 @@
     {
       "attribute_name": "{{component_id}}_attribute",
       "attribute_type": "number",
-      "attribute_label": "{{component_id}} attribute"
+      "attribute_label": "{{component_name}} attribute"
     }
   ],
   "eventTypes": [
@@ -17,7 +17,7 @@
       "description": "Event type for {{component_id}}",
       "has_lifecycle": false,
       "id": "{{component_id}}_event_type",
-      "label": "{{component_id}} Event Type",
+      "label": "{{component_name}} Event Type",
       "open_states": [],
       "priority": 2,
       "severity": 3
@@ -25,7 +25,7 @@
   ],
   "ruleTypes": [
     {
-      "label": "{asset_type_label} {{component_id}}",
+      "label": "{asset_type_label} {{component_name}}",
       "event_type_ids": [
         "{{component_id}}_event_type"
       ],
@@ -63,7 +63,7 @@
                   "equal": "",
                   "greaterThanInclusive": "is greater than",
                   "attribute": "{{component_id}}_attribute",
-                  "attribute_label": "{{component_id}} attribute"
+                  "attribute_label": "{{component_name}} attribute"
                 }
               },
               {
@@ -107,7 +107,7 @@
       "id": "",
       "is_disabled": false,
       "is_invalid": false,
-      "label": "{{component_id}} on {asset_type_label}",
+      "label": "{{component_name}} on {asset_type_label}",
       "priority": 2,
       "rule_type_id": "",
       "severity": 3,

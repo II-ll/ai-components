@@ -16,10 +16,5 @@ function {{component_prefix}}_install(req, resp) {
   const params = req.params;
   const mfe_settings = params.mfe_settings;
   //component install behavior here. Initialize an instance of the component for use
-  const col = ClearBladeAsync.Collection('{{component_prefix}}_{{collection_name}}');
-  col.create({
-    asset_type_id: params.entity_id,
-    component_id: params.component_id,
-    //any additional fields for the collection
-  }).then(resp.success).catch(resp.error);
+  resp.success('Success');
 }
