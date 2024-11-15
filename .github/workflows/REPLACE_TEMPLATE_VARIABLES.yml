@@ -1,6 +1,6 @@
 name: REPLACE_TEMPLATE_VARIABLES
 on:
-  create:
+  push:
     branches:
       - main
 
