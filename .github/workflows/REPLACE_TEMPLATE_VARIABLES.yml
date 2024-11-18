@@ -16,8 +16,15 @@ jobs:
         id: check-push
         run: |
           if [ "$GITHUB_ACTOR" == "github-actions" ]; then
-            echo "This is a retrigger. Skipping the job."
+            echo "This is a retrigger. Skipping workflow."
             exit 78
+          fi
+      - name: Check if it's the initial commit
+        id: check-initial
+        run: |
+          if [ $(git rev-list --count HEAD) -eq 1 ]; then
+            echo "This is the initial commit. Skipping workflow."
+            exit 0
           fi
       - name: Replace Variables in Files and File Names
         run: |
