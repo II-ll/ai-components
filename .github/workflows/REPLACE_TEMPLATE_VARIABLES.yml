@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        if: success() && 
         uses: actions/checkout@v3
         continue-on-error: true
         with:
