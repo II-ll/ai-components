@@ -9,8 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+      - name: Block retrigger
+        id: check-push
+        run: |
+          if [ "$GITHUB_ACTOR" == "github-actions" ]; then
+            echo "This is a retrigger. Skipping the job."
+            exit 78
+          fi
       - name: Replace Variables in Files and File Names
         run: |
           find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
@@ -22,6 +30,11 @@ jobs:
           find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//{{component_prefix}}/YOUR_COMPONENT_PREFIX}"' _ {} \;
           find . -depth -name '*{{component_name}}*' -execdir bash -c 'mv "$1" "${1//{{component_name}}/YOUR_COMPONENT_NAME}"' _ {} \;
 
+      - name: Clear and Rebuid Git Index
+        run: |
+          echo "Clearing Git index"
+          rm -f .git/index
+          git reset
       - name: Commit Changes
         run: |
           git config --local user.email "action@github.com"
