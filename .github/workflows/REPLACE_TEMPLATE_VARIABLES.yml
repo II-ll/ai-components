@@ -8,9 +8,14 @@ jobs:
   replace-variables:
     runs-on: ubuntu-latest
     steps:
+      - name: Check for PAT_TOKEN
+        run: |
+          if [ -z "${{ secrets.PAT_TOKEN }}" ]; then
+            echo "PAT_TOKEN is not set. Please set it in the repository secrets."
+            exit 0
+          fi
       - name: Checkout Repository
         uses: actions/checkout@v3
-        continue-on-error: true
         with:
           token: ${{ secrets.PAT_TOKEN }}
       - name: Block retrigger
@@ -19,13 +24,6 @@ jobs:
           if [ "$GITHUB_ACTOR" == "github-actions" ]; then
             echo "This is a retrigger. Skipping workflow."
             exit 78
-          fi
-      - name: Check if it's the initial commit
-        id: check-initial
-        run: |
-          if [ $(git rev-list --count HEAD) -eq 1 ]; then
-            echo "This is the initial commit. Skipping workflow."
-            exit 0
           fi
       - name: Replace Variables in Files and File Names
         run: |
