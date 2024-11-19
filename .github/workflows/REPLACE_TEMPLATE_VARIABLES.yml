@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/REPLACE_TEMPLATE_VARIABLES.yml'
 
 jobs:
   replace-variables:
@@ -12,13 +14,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT_TOKEN }}
-      - name: Block retrigger
-        id: check-push
-        run: |
-          if [ "$GITHUB_ACTOR" == "github-actions" ]; then
-            echo "This is a retrigger. Skipping workflow."
-            exit 78
-          fi
       - name: Replace Variables in Files and File Names
         run: |
           find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
