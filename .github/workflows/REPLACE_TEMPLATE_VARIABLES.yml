@@ -8,21 +8,11 @@ jobs:
   replace-variables:
     runs-on: ubuntu-latest
     steps:
-    #   - name: Check for PAT_TOKEN
-    #     run: |
-    #       if [ -z "${{ secrets.PAT_TOKEN }}" ]; then
-    #         echo "PAT_TOKEN is not set. Please set it in the repository secrets."
-    #         echo $"exist=true" >> $GITHUB_ENV
-    #       else
-    #         echo $"exist=false" >> $GITHUB_ENV
-    #       fi
       - name: Checkout Repository
-        #0if: env.exit == 'false'
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Block retrigger
-        #0if: env.exit == 'false'
         id: check-push
         run: |
           if [ "$GITHUB_ACTOR" == "github-actions" ]; then
@@ -30,7 +20,6 @@ jobs:
             exit 78
           fi
       - name: Replace Variables in Files and File Names
-        #0if: env.exit == 'false'
         run: |
           find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
           find . -type f -exec sed -i 's/{{component_prefix}}/YOUR_COMPONENT_PREFIX/g' {} \;
@@ -41,13 +30,11 @@ jobs:
           find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//{{component_prefix}}/YOUR_COMPONENT_PREFIX}"' _ {} \;
           find . -depth -name '*{{component_name}}*' -execdir bash -c 'mv "$1" "${1//{{component_name}}/YOUR_COMPONENT_NAME}"' _ {} \;
       - name: Clear and Rebuid Git Index
-        #0if: env.exit == 'false'
         run: |
           echo "Clearing Git index"
           rm -f .git/index
           git reset
       - name: Commit Changes
-        #0if: env.exit == 'false'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
