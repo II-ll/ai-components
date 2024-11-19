@@ -5,7 +5,7 @@
 - For the token settings, you may set the expiration date to the minimum option as you will only need this token once. Set `Repository access` to only select repositories and select the repository you just created. Under permissions for token, set both, `Contents` and `Workflows` to read and write, and make sure `Metadata` is set to read-only. Then click generate token and copy it to your clipboard.
 - Now return to the repository you created and navigate to `Settings` -> `Security` -> `Secrets and variables` -> `Actions` then click the `New repository secret` button. Set the secret name to `PAT_TOKEN` and paste in the token you generated to the box labeled `Secret`. Then add the secret.
 - Now clone the repo and navigate to .github/workflows/REPLACE_TEMPLATE_VARIABLES.yml in your local environment.
-- In this file replace all instances of YOUR_COMPONENT_ID, YOUR_COMPONENT_PREFIX, and YOUR_COMPONENT_NAME with your desired component id, component prefix and component name respectively. Your component id and prefix should only include alphanumeric characters and dashes/underscores. 
+- In this file replace all instances of YOUR_COMPONENT_ID, YOUR_COMPONENT_PREFIX, and YOUR_COMPONENT_NAME with your desired component id, component prefix and component name respectively. Your component id should only include alphanumeric characters and dashes/underscores. Your prefix should only include alphanumeric characters and underscores.
 - After filling in your desired values, push the change to your repository to fill in all template variables. The token you generated will no longer be needed.
 
 - Next, run `npm i` to install all dependencies

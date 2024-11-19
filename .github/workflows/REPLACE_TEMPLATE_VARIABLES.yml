@@ -16,9 +16,9 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
       - name: Replace Variables in Files and File Names
         run: |
-          find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
-          find . -type f -exec sed -i 's/{{component_prefix}}/YOUR_COMPONENT_PREFIX/g' {} \;
-          find . -type f -exec sed -i 's/{{component_name}}/YOUR_COMPONENT_NAME/g' {} \;
+          find . -type f ! -name 'REPLACE_TEMPLATE_VARIABLES.yml' -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
+          find . -type f ! -name 'REPLACE_TEMPLATE_VARIABLES.yml' -exec sed -i 's/{{component_prefix}}/YOUR_COMPONENT_PREFIX/g' {} \;
+          find . -type f ! -name 'REPLACE_TEMPLATE_VARIABLES.yml' -exec sed -i 's/{{component_name}}/YOUR_COMPONENT_NAME/g' {} \;
 
           # Rename files and directories with variables
           find . -depth -name '*{{component_id}}*' -execdir bash -c 'mv "$1" "${1//{{component_id}}/YOUR_COMPONENT_ID}"' _ {} \;
