@@ -21,9 +21,9 @@ jobs:
           find . -type f ! -name 'REPLACE_TEMPLATE_VARIABLES.yml' -exec sed -i 's/{{component_name}}/YOUR_COMPONENT_NAME/g' {} \;
 
           # Rename files and directories with variables
-          find . -depth -name '*{{component_id}}*' -execdir bash -c 'mv "$1" "${1//{{component_id}}/YOUR_COMPONENT_ID}"' _ {} \;
-          find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//{{component_prefix}}/YOUR_COMPONENT_PREFIX}"' _ {} \;
-          find . -depth -name '*{{component_name}}*' -execdir bash -c 'mv "$1" "${1//{{component_name}}/YOUR_COMPONENT_NAME}"' _ {} \;
+          find . -depth -name '*{{component_id}}*' -execdir bash -c 'mv "$1" "${1//{\{\component_id\}\}/YOUR_COMPONENT_ID}"' _ {} \;
+          find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//\{\{component_prefix\}\}/YOUR_COMPONENT_PREFIX}"' _ {} \;
+          find . -depth -name '*{{component_name}}*' -execdir bash -c 'mv "$1" "${1//\{\{component_name\}\}/YOUR_COMPONENT_NAME}"' _ {} \;
       - name: Clear and Rebuid Git Index
         run: |
           echo "Clearing Git index"
