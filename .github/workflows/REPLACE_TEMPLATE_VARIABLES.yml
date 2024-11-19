@@ -9,17 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for PAT_TOKEN
+        id: check-token
         run: |
           if [ -z "${{ secrets.PAT_TOKEN }}" ]; then
             echo "PAT_TOKEN is not set. Please set it in the repository secrets."
-            gh run cancel ${{ github.run_id }}
-            gh run watch ${{ github.run_id }}
+            echo "::set-output name=exit::true"
+          else
+            echo "::set-output name=exit::false"
           fi
       - name: Checkout Repository
+        if: steps.check-token.outputs.exit == 'false'
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT_TOKEN }}
       - name: Block retrigger
+        if: steps.check-token.outputs.exit == 'false'
         id: check-push
         run: |
           if [ "$GITHUB_ACTOR" == "github-actions" ]; then
@@ -27,6 +31,7 @@ jobs:
             exit 78
           fi
       - name: Replace Variables in Files and File Names
+        if: steps.check-token.outputs.exit == 'false'
         run: |
           find . -type f -exec sed -i 's/{{component_id}}/YOUR_COMPONENT_ID/g' {} \;
           find . -type f -exec sed -i 's/{{component_prefix}}/YOUR_COMPONENT_PREFIX/g' {} \;
@@ -36,13 +41,14 @@ jobs:
           find . -depth -name '*{{component_id}}*' -execdir bash -c 'mv "$1" "${1//{{component_id}}/YOUR_COMPONENT_ID}"' _ {} \;
           find . -depth -name '*{{component_prefix}}*' -execdir bash -c 'mv "$1" "${1//{{component_prefix}}/YOUR_COMPONENT_PREFIX}"' _ {} \;
           find . -depth -name '*{{component_name}}*' -execdir bash -c 'mv "$1" "${1//{{component_name}}/YOUR_COMPONENT_NAME}"' _ {} \;
-
       - name: Clear and Rebuid Git Index
+        if: steps.check-token.outputs.exit == 'false'
         run: |
           echo "Clearing Git index"
           rm -f .git/index
           git reset
       - name: Commit Changes
+        if: steps.check-token.outputs.exit == 'false'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
