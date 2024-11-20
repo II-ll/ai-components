@@ -1,7 +1,7 @@
 {
   "author": "ClearBlade",
   "description": "Component description",
-  "homepage": "https://github.com/ClearBlade/ai-components#readme",
+  "homepage": "https://github.com/ClearBlade/{{repo_name}}#readme",
   "image_url": "https://docs.clearblade.com/v/4/static/img/default_package.png",
   "keywords": [],
   "license": "MIT",
