@@ -10,6 +10,8 @@
  * @param {boolean} req.isLogging
  * @param {[id: string]} req.params
  * @param {CbServer.Resp} resp
+ *
+ * @typedef {{prefix: string, entity_id: string, component_id: string, mfe_settings: Record<string, unknown>}} UpdateParams
  */
 
 function {{component_prefix}}_update(req, resp) {
