@@ -1,7 +1,7 @@
 {
   "author": "ClearBlade",
   "description": "Component description",
-  "homepage": "https://github.com/ClearBlade/ai-components#readme",
+  "homepage": "",
   "image_url": "https://docs.clearblade.com/v/4/static/img/default_package.png",
   "keywords": [],
   "license": "MIT",
@@ -10,7 +10,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClearBlade/{{repo_name}}.git"
+    "url": "git+https://github.com/ClearBlade/components-template.git"
   },
   "engines": {
     "ia": ">=0.0.1 <14",
