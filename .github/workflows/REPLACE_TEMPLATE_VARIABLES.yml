@@ -45,9 +45,9 @@ jobs:
 
           echo "Using PREFIX=$PREFIX and ID=$ID"
 
-          find . -type f ! -name 'replace_template_vars.yml' -exec bash -c 'sed -i "s/{{component_id}}/$ID/g" "$0"' {} \;
-          find . -type f ! -name 'replace_template_vars.yml' -exec bash -c 'sed -i "s/{{component_prefix}}/$PREFIX/g" "$0"' {} \;
-          find . -type f ! -name 'replace_template_vars.yml' -exec bash -c 'sed -i "s/{{repo_name}}/$REPO_NAME/g" "$0"' {} \;
+          #find . -type f ! -name 'replace_template_vars.yml' -exec bash -c 'sed -i "s/{{component_id}}/$ID/g" "$0"' {} \;
+          #find . -type f ! -name 'replace_template_vars.yml' -exec bash -c 'sed -i "s/{{component_prefix}}/$PREFIX/g" "$0"' {} \;
+          #find . -type f ! -name 'replace_template_vars.yml' -exec bash -c 'sed -i "s/{{repo_name}}/$REPO_NAME/g" "$0"' {} \;
           
 
           # Rename files and directories with variables
