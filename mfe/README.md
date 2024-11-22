@@ -6,5 +6,5 @@ Custom components for asset types. To add a new component follow these steps -
   - `component`: Component id, name and meta 
   - `assetTypeName`: Asset Type on which this component is being configured
   - `setValues`: Setter function to store data in IA
-- Additionally, your component folder can have a settings.json file of type settings.d.ts (NOT YET UPDATED TO THE LATEST. See settings.json from Anomaly Detection for reference.) from root folder. You can specify IA entities you want to create when this component is configured in IA.
+- Additionally, your component folder can have a settings.json file of type settings.d.ts (NOT YET UPDATED TO THE LATEST. See [settings.json](https://github.com/ClearBlade/ai-components/blob/main/mfe/ai_components_AnomalyDetection/settings.json) from Anomaly Detection for reference.) from root folder. You can specify IA entities you want to create when this component is configured in IA.
 - Read more about custom components [here](https://github.com/ClearBlade/ai-components/blob/main/mfe/README.md)
